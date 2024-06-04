@@ -956,6 +956,11 @@ require('lazy').setup({
   },
 }, {})
 
+
+local wk = require 'which-key'
+
+wk.register({ ["ec"] = { ":e ~/.config/nvim/init.lua<CR>", "edit config" } }, { prefix = "<leader>", mode = "n", })
+
 -- A custom setup to limit width via comments, primarily for latex or markdown documents.
 function TextWidthConfig()
   function SetupTextWidth()
@@ -977,8 +982,6 @@ function TextWidthConfig()
       vim.cmd([[setlocal textwidth=]] .. tw .. [[ formatoptions+=t ]])
     end
   end
-
-  local wk = require 'which-key'
 
   wk.register({ ["'f"] = { "ms{gq}'s", 'Format paragraph' } }, {})
   wk.register({ ["'f"] = { 'gq', 'Format paragraph' } }, { mode = 'v' })
