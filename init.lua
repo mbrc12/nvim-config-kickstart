@@ -202,7 +202,7 @@ require('lazy').setup({
           { text = { '%C' }, click = 'v:lua.ScFa' },
           { text = { '%s' }, click = 'v:lua.ScSa' },
           {
-            text = { ' ', builtin.lnumfunc, ' ▐  ' }, --builtin.lnumfunc, " ┃ " }, -- ·" },
+            text = { ' ', builtin.lnumfunc, ' █ ' }, --builtin.lnumfunc, " ┃ " }, -- ·" },
             condition = { true, builtin.not_empty },
             click = 'v:lua.ScLa',
           },
@@ -540,7 +540,7 @@ require('lazy').setup({
           filetypes = { 'latex', 'tex', 'bib', 'markdown', 'text' },
         },
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -763,7 +763,7 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm {},
           ['<Tab>'] = cmp.mapping.select_next_item(),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
