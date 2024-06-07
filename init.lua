@@ -140,6 +140,17 @@ require('lazy').setup({
     },
   },
 
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "*",
+    opts = {
+      width = 120
+    },
+    keys = {
+      { "<leader><leader><leader>", ":NoNeckPain<CR>", desc = "No neck pain toggle", mode = "n" }
+    }
+  },
+
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
@@ -389,7 +400,18 @@ require('lazy').setup({
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim',       opts = {} },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "luvit-meta/library", words = { "vim%.uv" } },
+          },
+        },
+      },
+      { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     },
     config = function()
       --  This function gets run when an LSP attaches to a particular buffer.
@@ -796,6 +818,7 @@ require('lazy').setup({
         },
         sources = {
           -- { name = 'nvim_lsp_signature_help' },
+          { name = 'lazydev', group_index = 0 },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
